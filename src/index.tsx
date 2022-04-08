@@ -34,8 +34,8 @@ function Welcome(props: propType["welcome"]) {
 }
 
 interface Props {
-  date: Date;
-  timerID: number | undefined
+  date?: Date;
+  timerID?: number | undefined
 }
 interface State {
   date: Date;
@@ -46,17 +46,32 @@ class Clock extends React.Component<Props, State> {
   constructor(props:Props) {
     super(props);
     this.state = {date: new Date()};
+    
   }
+  tick = ()=> {
+    const element = (
+      <div>
+        <h1>Hello, world!</h1>
+        <h2>It is {new Date().toLocaleTimeString()}.</h2>
+      </div>
+    );
+    ReactDOM.render(
+      element,
+      document.getElementById('root')
+    );
+  }
+  static timerID: number | undefined
+  static tick: undefined
 
   componentDidMount() {
-    const timerID = setInterval(
+    Clock.timerID = window.setInterval(
       () => this.tick(),
       1000
     );
   }
 
   componentWillUnmount() {
-    clearInterval(timerID);
+    clearInterval(Clock.timerID);
   }
 
   render() {
