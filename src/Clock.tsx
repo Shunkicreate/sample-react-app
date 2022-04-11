@@ -1,5 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom/client';
+
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 interface propType {
@@ -9,8 +11,8 @@ interface propType {
   clock: {
     date: Date
   }
-  defclass:{
-    date:Date
+  defclass: {
+    date: Date
   }
 }
 function Welcome(props: propType["welcome"]) {
@@ -27,23 +29,27 @@ interface State {
 }
 
 export class Clock extends React.Component<Props, State> {
-  constructor(props:Props) {
+  constructor(props: Props) {
     super(props);
-    this.state = {date: new Date()};
-    
+    this.state = { date: new Date() };
+
   }
-  tick = ()=> {
-    const element = (
-      <div>
-        <h1>Hello, world!</h1>
-        <h2>It is {new Date().toLocaleTimeString()}.</h2>
-      </div>
-    );
-    ReactDOM.render(
-      element,
-      document.getElementById('root')
-    );
+  tick = () => {
+    // const element = (
+    //   <div>
+    //     <h1>Hello, world!</h1>
+    //     <h2>It is {new Date().toLocaleTimeString()}.</h2>
+    //   </div>
+    // );
+    // const root = ReactDOM.createRoot(
+    //   document.getElementById('clockdom')!
+    // );
+    // root.render(element)
+
     // return element
+    this.setState({
+      date: new Date()
+    });
   }
   static timerID: number | undefined
   static tick: void
@@ -53,17 +59,20 @@ export class Clock extends React.Component<Props, State> {
       () => this.tick(),
       1000
     );
+
   }
 
-  // componentWillUnmount() {
-  //   clearInterval(Clock.timerID);
-  // }
+  componentWillUnmount() {
+    clearInterval(Clock.timerID);
+  }
 
   render() {
     return (
-      <div>
-        <h1>Hello, world!</h1>
-        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+      <div id="clockdom">
+        <div>
+          <h1>Hello, world!</h1>
+          <h2>It is {new Date().toLocaleTimeString()}.</h2>
+        </div>
       </div>
     );
   }
