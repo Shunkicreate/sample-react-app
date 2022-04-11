@@ -7,6 +7,7 @@ import { Toggle } from './Toggle'
 import { Clock } from './Clock'
 import { createRoot } from 'react-dom/client';
 import { Greeting } from './Greeting'
+import {InputArea} from './InputArea'
 // ReactDOM.render(
 //   <React.StrictMode>
 //     <App />
@@ -118,7 +119,9 @@ root.render(
     {/* <App /> */}
     <Clock></Clock>
     <Toggle></Toggle>
-    <Greeting isLoggedIn={false} />,
+    <Greeting isLoggedIn={false} />
+    <Greeting isLoggedIn={true} />
+    <InputArea></InputArea>
   </React.StrictMode>
 );
 
