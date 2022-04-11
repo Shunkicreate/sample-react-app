@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import { Toggle } from './Toggle'
+import { Clock } from './Clock'
+import { createRoot } from 'react-dom/client';
 // ReactDOM.render(
 //   <React.StrictMode>
 //     <App />
@@ -25,8 +27,8 @@ interface propType {
   clock: {
     date: Date
   }
-  defclass:{
-    date:Date
+  defclass: {
+    date: Date
   }
 }
 function Welcome(props: propType["welcome"]) {
@@ -42,47 +44,47 @@ interface State {
   // timerID: number | undefined
 }
 
-class Clock extends React.Component<Props, State> {
-  constructor(props:Props) {
-    super(props);
-    this.state = {date: new Date()};
-    
-  }
-  tick = ()=> {
-    const element = (
-      <div>
-        <h1>Hello, world!</h1>
-        <h2>It is {new Date().toLocaleTimeString()}.</h2>
-      </div>
-    );
-    ReactDOM.render(
-      element,
-      document.getElementById('root')
-    );
-  }
-  static timerID: number | undefined
-  static tick: undefined
+// class Clock extends React.Component<Props, State> {
+//   constructor(props: Props) {
+//     super(props);
+//     this.state = { date: new Date() };
 
-  componentDidMount() {
-    Clock.timerID = window.setInterval(
-      () => this.tick(),
-      1000
-    );
-  }
+//   }
+//   tick = () => {
+//     const element = (
+//       <div>
+//         <h1>Hello, world!</h1>
+//         <h2>It is {new Date().toLocaleTimeString()}.</h2>
+//       </div>
+//     );
+//     ReactDOM.render(
+//       element,
+//       document.getElementById('root')
+//     );
+//   }
+//   static timerID: number | undefined
+//   static tick: undefined
 
-  componentWillUnmount() {
-    clearInterval(Clock.timerID);
-  }
+//   componentDidMount() {
+//     Clock.timerID = window.setInterval(
+//       () => this.tick(),
+//       1000
+//     );
+//   }
 
-  render() {
-    return (
-      <div>
-        <h1>Hello, world!</h1>
-        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
-      </div>
-    );
-  }
-}
+//   // componentWillUnmount() {
+//   //   clearInterval(Clock.timerID);
+//   // }
+
+//   render() {
+//     return (
+//       <div>
+//         <h1>Hello, world!</h1>
+//         <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+//       </div>
+//     );
+//   }
+// }
 
 // function Clock(props: propType["clock"]) {
 //   return (
@@ -100,10 +102,33 @@ class Clock extends React.Component<Props, State> {
 //     document.getElementById('root')
 //   );
 // }
-ReactDOM.render(
-  <Clock />,
-  document.getElementById('root')
+// class MainView extends React.Component {
+//   render() {
+//     return (
+//       <Clock />
+//       <Toggle></Toggle>
+//     );
+//   }
+// }
+const container = document.getElementById('root')!
+const root = createRoot(container);
+root.render(
+  <React.StrictMode>
+    {/* <App /> */}
+    <Clock></Clock>
+    <Toggle></Toggle>
+  </React.StrictMode>
 );
+
+// createRoot.render(
+//   // <Clock />,
+//   <React.StrictMode>
+//     {/* <App /> */}
+//     <Clock></Clock>
+//     <Toggle></Toggle>
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// );
 // setInterval(tick, 1000);
 
 
