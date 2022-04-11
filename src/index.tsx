@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { Toggle } from './Toggle'
 import { Clock } from './Clock'
 import { createRoot } from 'react-dom/client';
+import { Greeting } from './Greeting'
 // ReactDOM.render(
 //   <React.StrictMode>
 //     <App />
@@ -117,6 +118,7 @@ root.render(
     {/* <App /> */}
     <Clock></Clock>
     <Toggle></Toggle>
+    <Greeting isLoggedIn={false} />,
   </React.StrictMode>
 );
 

@@ -43,6 +43,7 @@ export class Clock extends React.Component<Props, State> {
       element,
       document.getElementById('root')
     );
+    // return element
   }
   static timerID: number | undefined
   static tick: void
